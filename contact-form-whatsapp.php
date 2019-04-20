@@ -37,6 +37,15 @@ function sp_form_contact_whatsapp( $atts ) {
         'purpose' => $purpose
     ] );
     wp_enqueue_script( 'sp-contact-form-wa' );
+	
+	$col = array( 5,5,2 );
+	if( isset( $atts['columns'] ) && $atts['columns'] != '' ) {
+		$_col = explode( ',', $atts['columns'] );
+		if( count( $_col ) == 3 ) {
+			$col = $_col;
+		}
+	}
+	
     $html = '';
     ob_start();
     include plugin_dir_path( __FILE__ ) . '/sc-form-wa.php';   
